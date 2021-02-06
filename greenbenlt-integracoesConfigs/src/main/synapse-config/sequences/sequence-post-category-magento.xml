@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="sequence-post-category-magento" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log description="Log customer message" level="custom">
+        <property name="MSG" value="MAGENTO: Message Processor got message"/>
+    </log>
+</sequence>

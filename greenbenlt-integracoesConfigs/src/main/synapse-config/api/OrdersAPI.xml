@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/greenbelt" name="OrdersAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="GET" uri-template="/_healthcheck">
+        <inSequence>
+            <payloadFactory media-type="xml">
+                <format>
+                    <heartbeat xmlns="">
+                        <msg>Request OK</msg>
+                    </heartbeat>
+                </format>
+                <args/>
+            </payloadFactory>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/orders/{ID}">
+        <inSequence>
+            <!--   <header name="Authorization" scope="transport" expression="fn:concat('Bearer ',$trp:Auth)"/> -->
+            <!-- Aqui deverá ter um token de sistema -->
+            <header expression="fn:concat('Bearer ','9eqsp4i92rups926srklbtnrdi9alvpp')" name="Authorization" scope="transport"/>
+            <!-- Aqui deverá ter um token de sistema -->
+            <call>
+                <endpoint>
+                    <http method="get" uri-template="https://dev.tocapet.com.br/rest/toca/V1/orders/{uri.var.ID}">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>1</progressionFactor>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <log level="full">
+                <property name="text" value="An unexpected error occured"/>
+                <property expression="get-property('ERROR_MESSAGE')" name="message"/>
+            </log>
+            <payloadFactory media-type="xml">
+                <format>
+                    <error xmlns="">
+                        <msg>$1</msg>
+                    </error>
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('ERROR_MESSAGE')"/>
+                </args>
+            </payloadFactory>
+            <property name="HTTP_SC_DESC" scope="axis2" type="STRING" value="Error in the Enterprise Integrator Layer"/>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="529"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <respond/>
+        </faultSequence>
+    </resource>
+    <resource methods="GET" uri-template="/categories">
+        <inSequence>
+            <!--   <header name="Authorization" scope="transport" expression="fn:concat('Bearer ',$trp:Auth)"/> -->
+            <!-- Aqui deverá ter um token de sistema -->
+            <header expression="fn:concat('Bearer ','gifkuu04fo66p172oro81xndz8l83bo0')" name="Authorization" scope="transport"/>
+            <!-- Aqui deverá ter um token de sistema -->
+            <call>
+                <endpoint>
+                    <http method="get" uri-template="https://hmg.tocapet.com.br/rest/toca/V1/categories">
+                        <suspendOnFailure>
+                            <initialDuration>-1</initialDuration>
+                            <progressionFactor>1</progressionFactor>
+                        </suspendOnFailure>
+                        <markForSuspension>
+                            <retriesBeforeSuspension>0</retriesBeforeSuspension>
+                        </markForSuspension>
+                    </http>
+                </endpoint>
+            </call>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <sequence key="sequenceError"/>
+        </faultSequence>
+    </resource>
+    <resource methods="POST" uri-template="/categories">
+        <inSequence>
+            <log level="custom">
+                <property name="msg" value="Processando Categoria POST"/>
+            </log>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <store description="Salvar Categoria" messageStore="messageStore"/>
+            <store description="Salvar Categoria" messageStore="message-store-magento"/>
+            <respond/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence>
+            <sequence key="sequenceError"/>
+        </faultSequence>
+    </resource>
+</api>

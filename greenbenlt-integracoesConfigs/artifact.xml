@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="OrdersAPI" groupId="greenbelt.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/OrdersAPI.xml</file>
+    </artifact>
+    <artifact name="Category" groupId="greenbelt.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Category.xml</file>
+    </artifact>
+    <artifact name="message-store-magento" groupId="greenbelt.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/message-store-magento.xml</file>
+    </artifact>
+    <artifact name="sequenceError" groupId="greenbelt.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/sequenceError.xml</file>
+    </artifact>
+    <artifact name="messageStore" groupId="greenbelt.message-store" version="1.0.0" type="synapse/message-store" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-stores/messageStore.xml</file>
+    </artifact>
+    <artifact name="messageProcessor" groupId="greenbelt.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/messageProcessor.xml</file>
+    </artifact>
+    <artifact name="sequence-call-backend" groupId="greenbelt.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/sequence-call-backend.xml</file>
+    </artifact>
+    <artifact name="sequence-post-category-magento" groupId="greenbelt.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/sequence-post-category-magento.xml</file>
+    </artifact>
+    <artifact name="processor-post-magento" groupId="greenbelt.message-processors" version="1.0.0" type="synapse/message-processors" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/message-processors/processor-post-magento.xml</file>
+    </artifact>
+</artifacts>
