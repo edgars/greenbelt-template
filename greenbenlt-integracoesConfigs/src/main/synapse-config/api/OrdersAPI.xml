@@ -20,7 +20,7 @@
         <inSequence>
             <!--   <header name="Authorization" scope="transport" expression="fn:concat('Bearer ',$trp:Auth)"/> -->
             <!-- Aqui deverá ter um token de sistema -->
-            <header expression="fn:concat('Bearer ','9eqsp4i92rups926srklbtnrdi9alvpp')" name="Authorization" scope="transport"/>
+            <header expression="fn:concat('Bearer ','9eqsp4i92ru')" name="Authorization" scope="transport"/>
             <!-- Aqui deverá ter um token de sistema -->
             <call>
                 <endpoint>
@@ -63,7 +63,7 @@
         <inSequence>
             <!--   <header name="Authorization" scope="transport" expression="fn:concat('Bearer ',$trp:Auth)"/> -->
             <!-- Aqui deverá ter um token de sistema -->
-            <header expression="fn:concat('Bearer ','gifkuu04fo66p172oro81xndz8l83bo0')" name="Authorization" scope="transport"/>
+            <header expression="fn:concat('Bearer ','gifkuu0')" name="Authorization" scope="transport"/>
             <!-- Aqui deverá ter um token de sistema -->
             <call>
                 <endpoint>
